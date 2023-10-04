@@ -13,17 +13,15 @@ Trabalho para 25/10/2023
     • Proteger Rotas das APIs com JWT ou outro mecanismo de token.
     • Realizar CRUD (GetAll, GetById, Insert, Update, Delete) em uma tabela do modulo financeiro em sistema ERP.
       
-# Tabelas – Todas devem ter pelo menos campos: ID, Removido, Tipo texto, Tipo data e 	Tipo Decimal
-    • Contas a pagar (
-        Id int, 
-        Removido boolean,
-        Observação varchar (100).
-        Vencimento date,
-        Valor Decimal,
-    )
-    • Contas a receber 
-    • Plano de contas
+# Tabelas – Todas devem ter pelo menos campos: ID, Removido, Tipo texto, Tipo data e Tipo Decimal
     • Bancos
     • Agência
-    • Conta-corrente
+    • Cliente(
+    id bigserial,
+    removido Boolean,
+    cpf varchar(14),
+    nome varchar(50),
+    data_nasc date,
+    renda decimal
+    )
       
