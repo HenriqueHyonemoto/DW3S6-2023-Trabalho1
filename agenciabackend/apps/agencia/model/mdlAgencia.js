@@ -57,14 +57,18 @@ const UpdateAgencia = async (registroPar) => {
           "banco = $4, " +
           "data_criacao = $5 " +  
           "taxa_transacao = $6 " +
-          "ativo = $6 " +            
+          "ativo = $7 " +  
+          "removido = $8 " +          
           "WHERE agenciaid = $1",
         [
             registroPar.agenciaid  ,
-            registroPar.codigo   ,
+            registroPar.numero_agencia,
             registroPar.descricao,
-            registroPar.ativo    ,
-            registroPar.deleted  ,          
+            registroPar.banco,
+            registroPar.data_ciacao,
+            registroPar.taxa_transacao,
+            registroPar.ativo,
+            registroPar.removido,          
         ]
       )
     ).rowCount;
