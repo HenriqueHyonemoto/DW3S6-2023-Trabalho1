@@ -55,9 +55,9 @@ const UpdateAgencia = async (registroPar) => {
           "numero_agencia = $2, " +
           "descricao = $3, " +
           "banco = $4, " +
-          "data_criacao = $5 " +  
-          "taxa_transacao = $6 " +
-          "ativo = $7 " +  
+          "data_criacao = $5, " +  
+          "taxa_transacao = $6, " +
+          "ativo = $7, " +  
           "removido = $8 " +          
           "WHERE agenciaid = $1",
         [

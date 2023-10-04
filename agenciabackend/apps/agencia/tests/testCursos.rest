@@ -38,8 +38,8 @@ content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
 
 {    
-    "agenciaid": 1,
-    "numero_agencia": 222,
+    "agenciaid": 5,
+    "numero_agencia": 223,
     "descricao": "Proximo ao Porecatu ALTERADO",
     "banco": "Santander ALTERADO",
     "data_criacao": "02/02/2002",
@@ -48,7 +48,7 @@ content-type: application/json
     "removido": false   
 }
 
-### teste de atualização de agencia
+### teste de remover a agencia
 POST http://localhost:40000/DeleteAgencia HTTP/1.1
 content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
