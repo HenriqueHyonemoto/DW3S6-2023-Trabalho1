@@ -1,4 +1,6 @@
-# DW3S6-2023-Trabalho1
+# Anotações do DW3S6-2023-Trabalho1
+
+
 Trabalho para 25/10/2023
 
 # Front End
