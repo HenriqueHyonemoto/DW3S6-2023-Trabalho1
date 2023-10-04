@@ -14,10 +14,26 @@ Trabalho para 25/10/2023
     • Realizar CRUD (GetAll, GetById, Insert, Update, Delete) em uma tabela do modulo financeiro em sistema ERP.
       
 # Tabelas – Todas devem ter pelo menos campos: ID, Removido, Tipo texto, Tipo data e Tipo Decimal
-    • Bancos
-    • Agência
+    • Bancos(
+    bancoid bigserial,
+    removido boolean,
+    nome varchar (40),
+    data_criacao date,
+    taxa_juros decimal
+    )
+    
+    • Agência(
+    agenciaid bigserial,
+    removido boolean
+    numagencia varchar(50) UNIQUE,
+    descricao varchar (40),
+    data_criacao date,
+    taxa_transacao decimal,
+    )
+
+    
     • Cliente(
-    id bigserial,
+    clienteid bigserial,
     removido Boolean,
     cpf varchar(14),
     nome varchar(50),
