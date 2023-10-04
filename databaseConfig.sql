@@ -1,5 +1,5 @@
-create table IF NOT EXISTS agencia (
-    agenciaid bigserial constraint pk_agencia PRIMARY KEY,
+create table IF NOT EXISTS banco (
+    bancoid bigserial constraint pk_banco PRIMARY KEY,
     codigo varchar(50) UNIQUE,
     descricao VARCHAR(60),
     ativo boolean,
@@ -7,10 +7,27 @@ create table IF NOT EXISTS agencia (
 );
 
 insert into agencia values 
-    (default, 'BSI', 'Bacharelado em Sistemas de Informação', true),
-    (default, 'DIREITO', 'Bacharelado em Direito', true),
-    (default, 'LETRAS', 'Licenciatura em Letras', true),
-    (default, 'ADM', 'Bacharelado em Administração', false)
+    (default, '001', 'Bacharelado em Sistemas de Informação', true),
+    (default, '007', 'Bacharelado em Direito', true),
+    (default, '238', 'Licenciatura em Letras', true),
+    (default, '102', 'Bacharelado em Administração', false)
+    ON CONFLICT DO NOTHING;
+
+
+create table IF NOT EXISTS agencia (
+    agenciaid bigserial constraint pk_agencia PRIMARY KEY,
+    codigo varchar(50) UNIQUE,
+    descricao VARCHAR(60),
+    ativo boolean,
+    agenciad bigint constraint fk_agencia_banco REFERENCES banco,
+    deleted boolean DEFAULT false
+);
+
+insert into agencia values 
+    (default, '001', 'Bacharelado em Sistemas de Informação', true),
+    (default, '007', 'Bacharelado em Direito', true),
+    (default, '238', 'Licenciatura em Letras', true),
+    (default, '102', 'Bacharelado em Administração', false)
     ON CONFLICT DO NOTHING;
 
 create table IF NOT EXISTS cliente (
@@ -18,9 +35,9 @@ create table IF NOT EXISTS cliente (
     prontuario varchar(10) UNIQUE,
     nome varchar(50),
     endereco VARCHAR(60),
-    rendafamiliar numeric(8,2),
+    renda numeric(8,2),
     datanascimento date,
-    cursoid bigint constraint fk_cliente_agencia REFERENCES cursos,
+    clienteid bigint constraint fk_cliente_agencia REFERENCES agencia,
     deleted boolean DEFAULT false
 );
 
@@ -31,6 +48,7 @@ insert into cliente values
         (SELECT cursoid from CURSOS where codigo = 'DIREITO'))
 ON CONFLICT DO NOTHING;
 
+--Usuarios do sistema
 create table IF NOT EXISTS usuarios (
     usuarioid bigserial constraint pk_usuarios PRIMARY KEY,
     username varchar(10) UNIQUE,
