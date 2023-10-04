@@ -14,6 +14,10 @@ Trabalho para 25/10/2023
     • Realizar CRUD (GetAll, GetById, Insert, Update, Delete) em uma tabela do modulo financeiro em sistema ERP.
       
 # Tabelas – Todas devem ter pelo menos campos: ID, Removido, Tipo texto, Tipo data e Tipo Decimal
+
+![image](https://github.com/HenriqueHyonemoto/DW3S6-2023-Trabalho1/assets/91375748/eb5d236a-086d-4325-92d4-ee83b89c4fea)
+
+
     • Bancos(
     bancoid bigserial,
     removido boolean,
