@@ -17,15 +17,6 @@ Trabalho para 25/10/2023
 
 ![image](https://github.com/HenriqueHyonemoto/DW3S6-2023-Trabalho1/assets/91375748/eb5d236a-086d-4325-92d4-ee83b89c4fea)
 
-
-    • Bancos(
-    bancoid bigserial,
-    removido boolean,
-    nome varchar (40),
-    data_criacao date,
-    taxa_juros decimal
-    )
-    
     • Agência(
     agenciaid bigserial,
     removido boolean
@@ -36,12 +27,5 @@ Trabalho para 25/10/2023
     )
 
     
-    • Cliente(
-    clienteid bigserial,
-    removido Boolean,
-    cpf varchar(14),
-    nome varchar(50),
-    data_nasc date,
-    renda decimal
-    )
+
       
