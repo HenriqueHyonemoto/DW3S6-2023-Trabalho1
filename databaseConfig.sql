@@ -2,8 +2,8 @@ create table IF NOT EXISTS banco (
     bancoid bigserial constraint pk_banco PRIMARY KEY,
     numero_banco varchar(50) UNIQUE,
     nome VARCHAR(40),
-    date,
-    taxa_juros numeric(,),
+    data_criacao date,
+    taxa_juros numeric(3,3),
     ativo boolean,
     removido boolean DEFAULT false
 );
@@ -36,11 +36,11 @@ insert into agencia values
 
 create table IF NOT EXISTS cliente (
     clienteid bigserial constraint pk_cliente PRIMARY KEY,
-    prontuario varchar(10) UNIQUE,
+    conta_corrente varchar(10) UNIQUE,
     nome varchar(50),
-    endereco VARCHAR(60),
+    cpf VARCHAR(14),
     renda numeric(8,2),
-    datanascimento date,
+    data_nasc date,
     clienteid bigint constraint fk_cliente_agencia REFERENCES agencia,
     removido boolean DEFAULT false
 );
