@@ -1,37 +1,37 @@
 create table IF NOT EXISTS banco (
     bancoid bigserial constraint pk_banco PRIMARY KEY,
-    numbanco varchar(50) UNIQUE,
-    nome VARCHAR(60),
+    numero_banco varchar(50) UNIQUE,
+    nome VARCHAR(40),
     date,
-    numeric(,),
+    taxa_juros numeric(,),
     ativo boolean,
-    deleted boolean DEFAULT false
+    removido boolean DEFAULT false
 );
 
 insert into banco values 
-    (default, '1234', 'Santander', true),
-    (default, '4321', 'Bradesco', true),
-    (default, '1473', 'Caixa Economica Federal', true),
-    (default, '9637', 'Banco do Brasil', false)
+    (default, '12345', 'Santander','','', true),
+    (default, '54321', 'Bradesco','','', true),
+    (default, '14736', 'Caixa Economica Federal','','', true),
+    (default, '96374', 'Banco do Brasil','','',false)
     ON CONFLICT DO NOTHING;
 
 
 create table IF NOT EXISTS agencia (
     agenciaid bigserial constraint pk_agencia PRIMARY KEY,
-    numagencia varchar(5) UNIQUE,
+    numero_agencia varchar(5) UNIQUE,
     descricao VARCHAR(60),
     data_criacao date,
     taxa_transacao numeric(3,3),
     ativo boolean,
     agenciad bigint constraint fk_agencia_banco REFERENCES banco,
-    deleted boolean DEFAULT false
+    removido boolean DEFAULT false
 );
 
 insert into agencia values 
-    (default, '001', 'Centro', true,(SELECT agenciaid from banco where numbanco = '001')),
-    (default, '007', 'Bacharelado em Direito', true),
-    (default, '238', 'Licenciatura em Letras', true),
-    (default, '102', 'Bacharelado em Administração', false)
+    (default, '001', 'Centro','','', true,(SELECT agenciaid from banco where numero_banco = '12345')),
+    (default, '007', 'Norte','','', true,(SELECT agenciaid from banco where numero_banco = '54321')),
+    (default, '238', 'Dentro do shopping Zona Sul','','', true,(SELECT agenciaid from banco where numero_banco = '14736')),
+    (default, '102', 'Ao lado do mercado Proença','','', false,(SELECT agenciaid from banco where numero_banco = '96374'))
     ON CONFLICT DO NOTHING;
 
 create table IF NOT EXISTS cliente (
@@ -42,7 +42,7 @@ create table IF NOT EXISTS cliente (
     renda numeric(8,2),
     datanascimento date,
     clienteid bigint constraint fk_cliente_agencia REFERENCES agencia,
-    deleted boolean DEFAULT false
+    removido boolean DEFAULT false
 );
 
 insert into cliente values 
@@ -57,7 +57,7 @@ create table IF NOT EXISTS usuarios (
     usuarioid bigserial constraint pk_usuarios PRIMARY KEY,
     username varchar(10) UNIQUE,
     password text,
-    deleted boolean DEFAULT false
+    removido boolean DEFAULT false
 );
 
 CREATE EXTENSION if NOT EXISTS pgcrypto;
