@@ -11,7 +11,7 @@ routerApp.use((req, res, next) => {
 
 //Rotas de Agencia
 routerApp.get("/GetAllAgencia", appAgencia.GetAllAgencia);
-routerApp.post("/GetCursoByID", appAgencia.GetCursoByID);
+routerApp.post("/GetAgenciaByID", appAgencia.GetAgenciaByID);
 routerApp.post("/InsertAgencia", appAgencia.InsertAgencia);
 routerApp.post("/UpdateAgencia", appAgencia.UpdateAgencia);
 routerApp.post("/DeleteAgencia", appAgencia.DeleteAgencia);
