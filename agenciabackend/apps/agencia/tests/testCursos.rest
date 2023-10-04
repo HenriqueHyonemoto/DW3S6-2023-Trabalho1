@@ -1,5 +1,5 @@
-### teste de buscar todos os alunos
-GET http://localhost:40000/GetAllCursos HTTP/1.1
+### teste de buscar todos os agencias
+GET http://localhost:40000/GetAllAgencia HTTP/1.1
 content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
 
@@ -7,46 +7,52 @@ content-type: application/json
     
 }
 
-### teste de buscar aluno por ID
-POST http://localhost:40000/GetCursoByID HTTP/1.1
+### teste de buscar agencia por ID
+POST http://localhost:40000/GetAgenciaByID HTTP/1.1
 content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
 
 {    
-    "cursoid": 4
+    "agenciaid": 1
 }
 
-### teste de inserção de aluno
-POST http://localhost:40000/InsertCursos HTTP/1.1
+### teste de inserção de agencia
+POST http://localhost:40000/InsertAgencia HTTP/1.1
 content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
 
 {    
-    "cursoid": 0,
-    "codigo": "Nutrição",
-    "descricao": "Bacharelado em Nutrição",
+    "agenciaid": 1,
+    "numero_agencia": 111,
+    "descricao": "Proximo ao Porecatu",
+    "banco": "Santander",
+    "data_criacao": "01/01/2001",
+    "taxa_transacao": 2.0,
     "ativo": true,
-    "deleted": false    
+    "removido": false    
 }
 
-### teste de atualização de aluno
-POST http://localhost:40000/UpdateCursos HTTP/1.1
+### teste de atualização de agencia
+POST http://localhost:40000/UpdateAgencia HTTP/1.1
 content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
 
 {    
-    "cursoid": 9,
-    "codigo": "xfisio",
-    "descricao": "xBacharelado em Fisioterapia",
+    "agenciaid": 1,
+    "numero_agencia": 222,
+    "descricao": "Proximo ao Porecatu ALTERADO",
+    "banco": "Santander ALTERADO",
+    "data_criacao": "02/02/2002",
+    "taxa_transacao": 2.0,
     "ativo": true,
-    "deleted": false 
+    "removido": false   
 }
 
-### teste de atualização de aluno
-POST http://localhost:40000/DeleteCursos HTTP/1.1
+### teste de atualização de agencia
+POST http://localhost:40000/DeleteAgencia HTTP/1.1
 content-type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
 
 {    
-    "cursoid": 9   
+    "agenciaid": 1 
 }

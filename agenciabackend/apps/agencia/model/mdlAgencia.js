@@ -3,7 +3,7 @@ const db = require("../../../database/databaseconfig");
 const GetAllAgencia = async () => {
   return (
     await db.query(
-      "SELECT * " + "FROM agencia where deleted = false ORDER BY descricao ASC"
+      "SELECT * " + "FROM agencia where removido = false ORDER BY descricao ASC"
     )
   ).rows;
 };
@@ -12,7 +12,7 @@ const GetAgenciaByID = async (agenciaIDPar) => {
   return (
     await db.query(
       "SELECT * " +
-        "FROM agencia WHERE agenciaid = $1 and deleted = false ORDER BY descricao ASC",
+        "FROM agencia WHERE agenciaid = $1 and removido = false ORDER BY descricao ASC",
       [agenciaIDPar]
     )
   ).rows;
@@ -88,7 +88,7 @@ const DeleteAgencia = async (registroPar) => {
   try {
     linhasAfetadas = (
     await db.query(
-      "UPDATE agencia SET " + "deleted = true " + "WHERE agenciaid = $1",
+      "UPDATE agencia SET " + "removido = true " + "WHERE agenciaid = $1",
       [registroPar.agenciaid]
     )
   ).rowCount;
