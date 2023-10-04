@@ -1,0 +1,9 @@
+@html.extend('layout', function(model){
+
+    @html.block('content', function(model){
+
+        <h3>Olá @model.title</h3>
+
+    })
+
+})
