@@ -21,7 +21,8 @@ Trabalho para 25/10/2023
     agenciaid bigserial,
     removido boolean
     numagencia varchar(50) UNIQUE,
-    descricao varchar (40),
+    banco varchar(40),
+    descricao varchar(40),
     data_criacao date,
     taxa_transacao decimal,
     )
