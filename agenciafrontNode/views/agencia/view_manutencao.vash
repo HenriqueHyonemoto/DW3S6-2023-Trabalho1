@@ -15,11 +15,19 @@
                 <div class="card mb-4">
                     <div class="col-2 ms-1 mt-1 mb-2">
                         <button type="button" class="btn btn-primary"
+<<<<<<< HEAD:agenciafrontNode/views/cursos/view_manutencao.vash
+                            onclick="window.location.href = '/agencias/openagenciasInsert'">Novo agencia</button>
+                    </div>
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Listagem de agencias
+=======
                             onclick="window.location.href = '/agencia/openAgenciaInsert'">Nova agencia</button>
                     </div>
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
                         Listagem de agencia
+>>>>>>> 87555d714c58b82bd10b2ecbf0992f4594395c6e:agenciafrontNode/views/agencia/view_manutencao.vash
                     </div>
 
 
@@ -36,7 +44,11 @@
                             <tbody>
                                 @model.data.registro.forEach(function(registro){
                                 <tr>                                    
+<<<<<<< HEAD:agenciafrontNode/views/cursos/view_manutencao.vash
+                                    <td><a href="/agencias/openagenciasUpdate/@registro.agenciaid" class="btn btn-info btn-sm"><i
+=======
                                     <td><a href="/agencia/openAgenciaUpdate/@registro.agenciaid" class="btn btn-info btn-sm"><i
+>>>>>>> 87555d714c58b82bd10b2ecbf0992f4594395c6e:agenciafrontNode/views/agencia/view_manutencao.vash
                                         class="fa fa-magnifying-glass"></i>Visualizar</a></td>
                                     <td>@registro.codigo</td>
                                     <td>@registro.descricao</td>
