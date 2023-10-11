@@ -20,7 +20,7 @@ const session = require('express-session');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
-var alunosRouter = require('./routes/rte_alunos');
+//var alunosRouter = require('./routes/rte_alunos');
 var agenciaRouter = require('./routes/rte_agencia');
 
 var app = express();
@@ -44,11 +44,10 @@ app.use(
   })
 );
 
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/alunos', alunosRouter);
+//app.use('/alunos', alunosRouter);
 app.use('/agencia',  agenciaRouter);
 
 // catch 404 and forward to error handler

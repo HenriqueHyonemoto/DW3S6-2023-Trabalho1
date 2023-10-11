@@ -15,11 +15,11 @@
                 <div class="card mb-4">
                     <div class="col-2 ms-1 mt-1 mb-2">
                         <button type="button" class="btn btn-primary"
-                            onclick="window.location.href = '/cursos/openCursosInsert'">Novo curso</button>
+                            onclick="window.location.href = '/agencia/openAgenciaInsert'">Nova agencia</button>
                     </div>
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Listagem de cursos
+                        Listagem de agencia
                     </div>
 
 
@@ -36,7 +36,7 @@
                             <tbody>
                                 @model.data.registro.forEach(function(registro){
                                 <tr>                                    
-                                    <td><a href="/cursos/openCursosUpdate/@registro.cursoid" class="btn btn-info btn-sm"><i
+                                    <td><a href="/agencia/openAgenciaUpdate/@registro.agenciaid" class="btn btn-info btn-sm"><i
                                         class="fa fa-magnifying-glass"></i>Visualizar</a></td>
                                     <td>@registro.codigo</td>
                                     <td>@registro.descricao</td>

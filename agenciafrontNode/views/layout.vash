@@ -63,13 +63,13 @@
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                     data-bs-target="#pagesCollapseError" aria-expanded="false"
                                     aria-controls="pagesCollapseError">
-                                    Cursos
+                                    Agencia
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
                                     data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="/cursos">Manutenção de cursos</a>
+                                        <a class="nav-link" href="/agencia">Manutenção de agencia</a>
                                     </nav>
                                 </div>
                             </nav>
