@@ -21,7 +21,7 @@ require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var alunosRouter = require('./routes/rte_alunos');
-var cursosRouter = require('./routes/rte_cursos');
+var agenciaRouter = require('./routes/rte_agencia');
 
 var app = express();
 
@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/alunos', alunosRouter);
-app.use('/cursos',  cursosRouter);
+app.use('/agencia',  agenciaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
