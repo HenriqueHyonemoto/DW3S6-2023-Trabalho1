@@ -43,9 +43,9 @@ Trabalho para 25/10/2023
 
 ![image](https://github.com/HenriqueHyonemoto/DW3S6-2023-Trabalho1/assets/91375748/eb5d236a-086d-4325-92d4-ee83b89c4fea)
 
-    • Agência(
+    • agencia(
     agenciaid bigserial,
-    numagencia varchar(50) UNIQUE,
+    numero_agencia varchar(50) UNIQUE,
     banco varchar(40),
     descricao varchar(40),
     data_criacao date,
@@ -53,15 +53,4 @@ Trabalho para 25/10/2023
     removido boolean,
     ativo boolean,
     )
-
- 
-    agenciaid =
-    removido =
-    numagencia = codigo
-    banco =
-    descricao =
-    data_criacao =
-    taxa_transacao =
-
-
       
