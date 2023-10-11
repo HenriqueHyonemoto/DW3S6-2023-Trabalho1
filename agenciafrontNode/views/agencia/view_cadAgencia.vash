@@ -174,7 +174,7 @@
     } else {
       formDataPar.set("ativo", false);
     }
-    formDataPar.set("deleted", false);
+    formDataPar.set("removido", false);
 
     return validado;
   }

@@ -49,7 +49,7 @@ function validateForm(regFormPar) {
   }
 
   regFormPar.ativo = regFormPar.ativo === "true"; //converte para true ou false um check componet
-  regFormPar.deleted = regFormPar.deleted === "true"; //converte para true ou false um check componet
+  regFormPar.removido = regFormPar.removido === "true"; //converte para true ou false um check componet
 
   return regFormPar;
 }
