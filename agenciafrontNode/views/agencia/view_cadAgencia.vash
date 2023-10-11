@@ -16,32 +16,32 @@
               <div class="mb-1" style="display: none">
                 <input type="number" name="agenciaid" class="form-control" id="agenciaid" />
               </div>
-              <div class="mb-1 row ">
+             <div class="mb-1 row ">
                 <label for="numagencia" class="col-sm-2 col-xxl-1 col-form-label required">Número da Agencia:</label>
                 <div class="col-sm-4 col-xxl-2">
-                  <input type="text" name="numagencia" class="form-control-plaintext" id="numagencia" maxlength="10" required readonly />
+                  <input type="text" name="numagencia" class="form-control" id="numagencia" maxlength="10" />
                 </div>
-
+                
                 <label for="banco" class="col-sm-2 col-xxl-1 col-form-label required">Banco Responsável:</label>
                 <div class="col-sm-4 col-xxl-3">
-                  <input type="text" name="banco" class="form-control-plaintext" id="banco" maxlength="50" required readonly />
+                  <input type="text" name="banco" class="form-control" id="banco" maxlength="10"/>
                 </div>
 
                 <label for="descricao" class="col-sm-2 col-xxl-1 col-form-label required">Descrição:</label>
                 <div class="col-sm-4 col-xxl-3">
-                  <input type="text" name="descricao" class="form-control-plaintext" id="descricao" maxlength="50" required readonly />
+                  <input type="text" name="descricao" class="form-control" id="descricao" maxlength="50"/>
                 </div>
-              </div>
+              </div>-
 
               <div class="mb-1 row ">
                 <label for="data_criacao" class="col-sm-2 col-xxl-1 col-form-label required">Data de Criação</label>
                 <div class="col-sm-4 col-xxl-2">
-                  <input type="date" name="data_criacao" class="form-control-plaintext" id="data_criacao" required readonly />
+                  <input type="date" name="data_criacao" class="form-control" id="data_criacao"/>
                 </div>
 
                 <label for="taxa_transacao" class="col-sm-2 col-xxl-1 col-form-label required">taxa de transação:</label>
                 <div class="col-sm-4 col-xxl-3">
-                  <input type="text" name="taxa_transacao" class="form-control-plaintext" id="taxa_transacao" maxlength="5" required readonly />
+                  <input type="text" name="taxa_transacao" class="form-control" id="taxa_transacao" maxlength="5"/>
                 </div>
               </div>
 
