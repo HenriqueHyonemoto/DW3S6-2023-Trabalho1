@@ -15,11 +15,11 @@
                 <div class="card mb-4">
                     <div class="col-2 ms-1 mt-1 mb-2">
                         <button type="button" class="btn btn-primary"
-                            onclick="window.location.href = '/agencias/openagenciasInsert'">Novo agencia</button>
+                            onclick="window.location.href = '/agencia/openagenciaInsert'">Novo agencia</button>
                     </div>
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Listagem de agencias
+                        Listagem de agencia
                     </div>
 
 

@@ -20,7 +20,6 @@ const session = require('express-session');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
-//var alunosRouter = require('./routes/rte_alunos');
 var agenciaRouter = require('./routes/rte_agencia');
 
 var app = express();

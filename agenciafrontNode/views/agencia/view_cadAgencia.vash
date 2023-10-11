@@ -72,7 +72,7 @@
               Remover
             </button>
 
-            <button type="button" class="btn btn-primary" onclick="window.location.href = '/agencias'" id="btnFechar">
+            <button type="button" class="btn btn-primary" onclick="window.location.href = '/agencia'" id="btnFechar">
               Fechar
             </button>
           </div>
@@ -123,7 +123,7 @@
 
     try {
       const resp = await axios.post(
-        "/agencias/getDados", {
+        "/agencia/getDados", {
           idBusca: idBuscaPar
         }, {
           headers: {
@@ -148,7 +148,7 @@
         alert("Houve erro ao buscar os dados dos alunos!");
       } */
     } catch (error) {
-      alert("[view_cadAgencias|getDados]Ocorreu um erro inesperado!" + error);
+      alert("[view_cadagencia|getDados]Ocorreu um erro inesperado!" + error);
     }
   }
 
@@ -189,7 +189,7 @@
     }
 
     try {
-      resp = await axios.post("/agencias/insertAgencias", formData, {
+      resp = await axios.post("/agencia/insertagencia", formData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -202,7 +202,7 @@
         alert("Houve um erro: " + resp.data.mensagem);
       }
     } catch (error) {
-      alert("[view_cadAgencias|btnSalvar]Ocorreu um erro inesperado!" + error);
+      alert("[view_cadagencia|btnSalvar]Ocorreu um erro inesperado!" + error);
     }
   }
 
@@ -228,7 +228,7 @@
   }
 
   //@ Salva a alteração
-  //@ console.log("[view_cadAgencias|btnSalvarAlteracao] :", )
+  //@ console.log("[view_cadagencia|btnSalvarAlteracao] :", )
   async function btnSalvarAlteracao() {
     const formData = new FormData(form);
     const validado = validaForm(formData);
@@ -237,7 +237,7 @@
     }
 
     try {
-      resp = await axios.post("/agencias/updateAgencias", formData, {
+      resp = await axios.post("/agencia/updateagencia", formData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -245,25 +245,25 @@
 
       if (resp.data.status == "ok") {
         alert(resp.data.mensagem);
-        window.open("/agencias/openAgenciasUpdate/" + String($("#agenciaid").val()), "_self");
+        window.open("/agencia/openagenciaUpdate/" + String($("#agenciaid").val()), "_self");
       } else {
         alert("Houve um erro: " + resp.data.mensagem);
       }
     } catch (error) {
-      alert("[view_cadAgencias|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
+      alert("[view_cadagencia|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
     }
 
 
   }
 
   //@ Cancela a alteração
-  //@ console.log("[view_cadAgencias|btnCancelarAlteracao] Valor do id", $("#agenciaid").val());    
+  //@ console.log("[view_cadagencia|btnCancelarAlteracao] Valor do id", $("#agenciaid").val());    
   async function btnCancelarAlteracao() {
-    window.open("/agencias/openAgenciasUpdate/" + String($("#agenciaid").val()), "_self");
+    window.open("/agencia/openagenciaUpdate/" + String($("#agenciaid").val()), "_self");
   }
 
   //@ Remove agencia
-  //@ console.log("[view_cadAgencias|btnSalvarAlteracao] :", )
+  //@ console.log("[view_cadagencia|btnSalvarAlteracao] :", )
   async function btnRemover() { 
 
     var confirma = confirm("Deseja realmente remover o registro?");
@@ -273,7 +273,7 @@
     const formData = new FormData(form);
 
     try {
-      resp = await axios.post("/agencias/deleteAgencias", {
+      resp = await axios.post("/agencia/deleteagencia", {
         agenciaid: formData.get("agenciaid")
       }, {
         headers: {
@@ -283,12 +283,12 @@
 
       if (resp.data.status == "ok") {
         alert(resp.data.mensagem);
-        window.open("/agencias", "_self");
+        window.open("/agencia", "_self");
       } else {
         alert("Houve um erro: " + resp.data.mensagem);
       }
     } catch (error) {
-      alert("[view_cadAgencias|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
+      alert("[view_cadagencia|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
     }
   }
 
