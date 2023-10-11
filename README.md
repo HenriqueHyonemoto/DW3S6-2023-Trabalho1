@@ -1,8 +1,10 @@
 # Anotações do DW3S6-2023-Trabalho1
 # Comandos inicialização
 
-usuario e senha: qwe
-
+### usuario e senha
+```
+qwe
+```
 ### Linux
 ```
 DEBUG=dw3frontnode:* npm start
