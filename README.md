@@ -3,6 +3,10 @@
 ```
 node app.js
 ```
+### Caso "Error: Cannot find module 'express'"
+```
+npm i
+```
 # Comandos inicialização front
 
 ### usuario e senha
