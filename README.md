@@ -1,5 +1,9 @@
 # Anotações do DW3S6-2023-Trabalho1
-# Comandos inicialização
+# Comandos inicialização back
+```
+node app.js
+```
+# Comandos inicialização front
 
 ### usuario e senha
 ```
