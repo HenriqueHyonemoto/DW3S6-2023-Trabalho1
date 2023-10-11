@@ -7,7 +7,7 @@ const getAllAgencia = (req, res) =>
     try {
       resp = await axios.get(process.env.SERVIDOR_DW3 + "/GetAllAgencia", {});
       //console.log("[ctlLogin.js] Valor resp:", resp.data);
-      res.render("Agencia/view_manutencao", {
+      res.render("agencia/view_manutencao", {
         title: "Manutenção de Agencia",
         data: resp.data,
         userName: userName,
@@ -26,7 +26,7 @@ const openAgenciaInsert = (req, res) =>
     try {
       if (req.method == "GET") {
         oper = "c";
-        res.render("Agencia/view_cadAgencia", {
+        res.render("agencia/view_cadAgencia", {
           title: "Cadastro de Agencia",
           oper: oper,
           userName: userName,
@@ -34,7 +34,7 @@ const openAgenciaInsert = (req, res) =>
       }
     } catch (erro) {
       console.log(
-        "[ctlAlunos.js|insertAlunos] Try Catch: Erro não identificado",
+        "Try Catch: Erro não identificado",
         erro
       );
     }
@@ -65,7 +65,7 @@ const openAgenciaUpdate = (req, res) =>
         oper = "u";
         const id = req.params.id;
         parseInt(id);
-        res.render("Agencia/view_cadAgencia", {
+        res.render("agencia/view_cadAgencia", {
           title: "Cadastro de Agencia",
           oper: oper,
           idBusca: id,
@@ -74,7 +74,7 @@ const openAgenciaUpdate = (req, res) =>
       }
     } catch (erro) {
       console.log(
-        "[ctlAlunos.js|insertAlunos] Try Catch: Erro não identificado",
+        "Try Catch: Erro não identificado",
         erro
       );
     }
@@ -84,7 +84,7 @@ const openAgenciaUpdate = (req, res) =>
 //@ Recupera os dados dos Agencia
 const getDados = (req, res) =>
   (async () => {
-    const idBusca = req.body.idBusca;    
+    const idBusca = req.body.idBusca;
     parseInt(idBusca);
     console.log("[ctlAgencia.js|getDados] valor id :", idBusca);
     try {
@@ -103,13 +103,13 @@ const getDados = (req, res) =>
       if (resp.data.status == "ok") {
         res.json({ status: "ok", registro: resp.data.registro[0] });
       }
-    } catch (error) { 
+    } catch (error) {
       console.log(
         "[ctlAgencia.js|getDados] Try Catch: Erro não identificado",
         erro
       );
     }
-    
+
   })();
 
 //@ Realiza inserção de Agencia
@@ -120,6 +120,9 @@ const insertAgencia = (req, res) =>
       if (req.method == "POST") {
         const regPost = validateForm(req.body);
         regPost.agenciaid = 0;
+        console.log(
+          "Valor do regPost: ", regPost
+        );
         const resp = await axios.post(
           process.env.SERVIDOR_DW3 + "/InsertAgencia",
           regPost,
@@ -139,16 +142,15 @@ const insertAgencia = (req, res) =>
       }
     } catch (erro) {
       console.log(
-        "[ctlAlunos.js|insertAlunos] Try Catch: Erro não identificado",
+        "Try Catch: Erro não identificado",
         erro
       );
     }
   })();
 
- 
-  
+
+
 //@ Realiza atualização de Agencia
-///@ console.log("[ctlAlunos.js|updateAgencia] Valor regPost: ", regPost);
 const updateAgencia = (req, res) =>
   (async () => {
     token = req.session.token;
@@ -174,45 +176,44 @@ const updateAgencia = (req, res) =>
       }
     } catch (erro) {
       console.log(
-        "[ctlAlunos.js|updateAgencia] Try Catch: Erro não identificado.",
+        " Try Catch: Erro não identificado.",
         erro
       );
     }
   })();
 
 //@ Realiza remoção soft de Agencia
-//@ "[ctlAlunos.js|deleteAgencia] Try Catch: Erro não identificado", erro);
 const deleteAgencia = (req, res) =>
-(async () => {
-  token = req.session.token;
-  try {
-    if (req.method == "POST") {
-      const regPost = validateForm(req.body);
-      regPost.agenciaid = parseInt(regPost.agenciaid);
-      const resp = await axios.post(
-        process.env.SERVIDOR_DW3 + "/DeleteAgencia",
-        {
-          agenciaid: regPost.agenciaid,
-        },        
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+  (async () => {
+    token = req.session.token;
+    try {
+      if (req.method == "POST") {
+        const regPost = validateForm(req.body);
+        regPost.agenciaid = parseInt(regPost.agenciaid);
+        const resp = await axios.post(
+          process.env.SERVIDOR_DW3 + "/DeleteAgencia",
+          {
+            agenciaid: regPost.agenciaid,
           },
-        }
-      );
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
 
-      if (resp.data.status == "ok") {
-        res.json({ status: "ok", mensagem: "Agencia removido com sucesso!" });
-      } else {
-        res.json({ status: "erro", mensagem: "Erro ao remover agencia!" });
+        if (resp.data.status == "ok") {
+          res.json({ status: "ok", mensagem: "Agencia removido com sucesso!" });
+        } else {
+          res.json({ status: "erro", mensagem: "Erro ao remover agencia!" });
+        }
       }
+    } catch (erro) {
+      console.log(
+        "Try Catch: Erro não identificado", erro);
     }
-  } catch (erro) {
-    console.log(
-      "[ctlAlunos.js|deleteAgencia] Try Catch: Erro não identificado", erro);
-  }
-})();
+  })();
 module.exports = {
   getAllAgencia,
   openAgenciaInsert,

@@ -45,7 +45,7 @@ Trabalho para 25/10/2023
 
     • Agência(
     agenciaid bigserial,
-    numagencia varchar(50) UNIQUE,
+    numero_agencia varchar(50) UNIQUE,
     banco varchar(40),
     descricao varchar(40),
     data_criacao date,
@@ -57,7 +57,7 @@ Trabalho para 25/10/2023
  
     agenciaid =
     removido =
-    numagencia = codigo
+    numero_agencia = codigo
     banco =
     descricao =
     data_criacao =

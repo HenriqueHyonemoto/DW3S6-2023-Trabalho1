@@ -17,9 +17,9 @@
                 <input type="number" name="agenciaid" class="form-control" id="agenciaid" />
               </div>
              <div class="mb-1 row ">
-                <label for="numagencia" class="col-sm-2 col-xxl-1 col-form-label required">Número da Agencia:</label>
+                <label for="numero_agencia" class="col-sm-2 col-xxl-1 col-form-label required">Número da Agencia:</label>
                 <div class="col-sm-4 col-xxl-2">
-                  <input type="text" name="numagencia" class="form-control" id="numagencia" maxlength="10" />
+                  <input type="text" name="numero_agencia" class="form-control" id="numero_agencia" maxlength="10"/>
                 </div>
                 
                 <label for="banco" class="col-sm-2 col-xxl-1 col-form-label required">Banco Responsável:</label>
@@ -31,7 +31,7 @@
                 <div class="col-sm-4 col-xxl-3">
                   <input type="text" name="descricao" class="form-control" id="descricao" maxlength="50"/>
                 </div>
-              </div>-
+              </div>
 
               <div class="mb-1 row ">
                 <label for="data_criacao" class="col-sm-2 col-xxl-1 col-form-label required">Data de Criação</label>
@@ -41,7 +41,7 @@
 
                 <label for="taxa_transacao" class="col-sm-2 col-xxl-1 col-form-label required">taxa de transação:</label>
                 <div class="col-sm-4 col-xxl-3">
-                  <input type="text" name="taxa_transacao" class="form-control" id="taxa_transacao" maxlength="5"/>
+                  <input type="text" name="taxa_transacao" class="form-control" id="taxa_transacao" placeholder="0.0" maxlength="2"/>
                 </div>
               </div>
 
@@ -114,7 +114,7 @@
     }
 
     //Coloca o agencia no primeiro campo do formulário
-    $("#numagencia").focus();
+    $("#numero_agencia").focus();
   }
 
   //@ Busca os dados de acordo com o ID para serem alterados
@@ -133,7 +133,7 @@
       );
       if (resp.data.status == "ok") {
         $("#agenciaid").val(resp.data.registro.agenciaid);
-        $("#numagencia").val(resp.data.registro.numagencia);
+        $("#numero_agencia").val(resp.data.registro.numero_agencia);
         $("#banco").val(resp.data.registro.banco);
         $("#descricao").val(resp.data.registro.descricao);
         $("#data_criacao").val(resp.data.registro.data_criacao);
@@ -208,8 +208,8 @@
 
   //@ Habilita form para alteração
   function habilitaForm() {
-    $("#numagencia").prop("class", "form-control");
-    $("#numagencia").prop("readonly", false);
+    $("#numero_agencia").prop("class", "form-control");
+    $("#numero_agencia").prop("readonly", false);
 
     $("#descricao").prop("class", "form-control");
     $("#descricao").prop("readonly", false);
