@@ -1,5 +1,19 @@
 # Anotações do DW3S6-2023-Trabalho1
+# Comandos inicialização
 
+usuario e senha: qwe
+
+### Linux
+```
+DEBUG=dw3frontnode:* npm start
+```
+### Windows
+```
+set DEBUG=dw3frontNode:*
+```
+```
+npm start
+```
 
 Trabalho para 25/10/2023
 
