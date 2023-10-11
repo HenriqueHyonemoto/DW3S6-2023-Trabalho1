@@ -29,6 +29,14 @@ Trabalho para 25/10/2023
     taxa_transacao decimal,
     )
 
-    
+ 
+    agenciaid =
+    removido =
+    numagencia = codigo
+    banco =
+    descricao =
+    data_criacao =
+    taxa_transacao =
+
 
       
