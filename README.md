@@ -51,7 +51,7 @@ Trabalho para 25/10/2023
     data_criacao date,
     taxa_transacao decimal,
     removido boolean,
-     ativo boolean,
+    ativo boolean,
     )
 
  
