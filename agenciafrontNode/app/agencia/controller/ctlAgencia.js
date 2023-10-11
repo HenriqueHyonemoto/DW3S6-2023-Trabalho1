@@ -7,7 +7,7 @@ const getAllAgencia = (req, res) =>
     try {
       resp = await axios.get(process.env.SERVIDOR_DW3 + "/GetAllAgencia", {});
       //console.log("[ctlLogin.js] Valor resp:", resp.data);
-      res.render("Agencia/view_manutencao", {
+      res.render("agencia/view_manutencao", {
         title: "Manutenção de Agencia",
         data: resp.data,
         userName: userName,
