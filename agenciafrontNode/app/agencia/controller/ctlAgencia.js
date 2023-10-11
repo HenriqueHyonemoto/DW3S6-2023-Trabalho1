@@ -1,24 +1,24 @@
 const axios = require("axios");
 
-//@ Abre o formulário de manutenção de cursos
-const getAllCursos = (req, res) =>
+//@ Abre o formulário de manutenção de Agencia
+const getAllAgencia = (req, res) =>
   (async () => {
     userName = req.session.userName;
     try {
-      resp = await axios.get(process.env.SERVIDOR_DW3 + "/GetAllCursos", {});
+      resp = await axios.get(process.env.SERVIDOR_DW3 + "/GetAllAgencia", {});
       //console.log("[ctlLogin.js] Valor resp:", resp.data);
-      res.render("cursos/view_manutencao", {
-        title: "Manutenção de cursos",
+      res.render("Agencia/view_manutencao", {
+        title: "Manutenção de Agencia",
         data: resp.data,
         userName: userName,
       });
     } catch (erro) {
-      console.log("[ctlCursos.js|getAllCursos] Try Catch:Erro de requisição");
+      console.log("[ctlAgencia.js|getAllAgencia] Try Catch:Erro de requisição");
     }
   })();
 
-//@ Abre formulário de cadastro de cursos
-const openCursosInsert = (req, res) =>
+//@ Abre formulário de cadastro de Agencia
+const openAgenciaInsert = (req, res) =>
   (async () => {
     var oper = "";
     userName = req.session.userName;
@@ -26,8 +26,8 @@ const openCursosInsert = (req, res) =>
     try {
       if (req.method == "GET") {
         oper = "c";
-        res.render("cursos/view_cadCursos", {
-          title: "Cadastro de cursos",
+        res.render("Agencia/view_cadAgencia", {
+          title: "Cadastro de Agencia",
           oper: oper,
           userName: userName,
         });
@@ -54,8 +54,8 @@ function validateForm(regFormPar) {
   return regFormPar;
 }
 
-//@ Abre formulário de cadastro de cursos
-const openCursosUpdate = (req, res) =>
+//@ Abre formulário de cadastro de Agencia
+const openAgenciaUpdate = (req, res) =>
   (async () => {
     var oper = "";
     userName = req.session.userName;
@@ -65,8 +65,8 @@ const openCursosUpdate = (req, res) =>
         oper = "u";
         const id = req.params.id;
         parseInt(id);
-        res.render("cursos/view_cadCursos", {
-          title: "Cadastro de cursos",
+        res.render("Agencia/view_cadAgencia", {
+          title: "Cadastro de Agencia",
           oper: oper,
           idBusca: id,
           userName: userName,
@@ -81,12 +81,12 @@ const openCursosUpdate = (req, res) =>
   })();
 
 
-//@ Recupera os dados dos cursos
+//@ Recupera os dados dos Agencia
 const getDados = (req, res) =>
   (async () => {
     const idBusca = req.body.idBusca;    
     parseInt(idBusca);
-    console.log("[ctlCursos.js|getDados] valor id :", idBusca);
+    console.log("[ctlAgencia.js|getDados] valor id :", idBusca);
     try {
       resp = await axios.post(
         process.env.SERVIDOR_DW3 + "/GetCursoByID",
@@ -105,15 +105,15 @@ const getDados = (req, res) =>
       }
     } catch (error) { 
       console.log(
-        "[ctlCursos.js|getDados] Try Catch: Erro não identificado",
+        "[ctlAgencia.js|getDados] Try Catch: Erro não identificado",
         erro
       );
     }
     
   })();
 
-//@ Realiza inserção de cursos
-const insertCursos = (req, res) =>
+//@ Realiza inserção de Agencia
+const insertAgencia = (req, res) =>
   (async () => {
     token = req.session.token;
     try {
@@ -121,7 +121,7 @@ const insertCursos = (req, res) =>
         const regPost = validateForm(req.body);
         regPost.cursoid = 0;
         const resp = await axios.post(
-          process.env.SERVIDOR_DW3 + "/InsertCursos",
+          process.env.SERVIDOR_DW3 + "/InsertAgencia",
           regPost,
           {
             headers: {
@@ -132,9 +132,9 @@ const insertCursos = (req, res) =>
         );
 
         if (resp.data.status == "ok") {
-          res.json({ status: "ok", mensagem: "Curso inserido com sucesso!" });
+          res.json({ status: "ok", mensagem: "Agencia inserido com sucesso!" });
         } else {
-          res.json({ status: "erro", mensagem: "Erro ao inserir curso!" });
+          res.json({ status: "erro", mensagem: "Erro ao inserir agencia!" });
         }
       }
     } catch (erro) {
@@ -147,16 +147,16 @@ const insertCursos = (req, res) =>
 
  
   
-//@ Realiza atualização de cursos
-///@ console.log("[ctlAlunos.js|updateCursos] Valor regPost: ", regPost);
-const updateCursos = (req, res) =>
+//@ Realiza atualização de Agencia
+///@ console.log("[ctlAlunos.js|updateAgencia] Valor regPost: ", regPost);
+const updateAgencia = (req, res) =>
   (async () => {
     token = req.session.token;
     try {
       if (req.method == "POST") {
         const regPost = validateForm(req.body);
         const resp = await axios.post(
-          process.env.SERVIDOR_DW3 + "/UpdateCursos",
+          process.env.SERVIDOR_DW3 + "/UpdateAgencia",
           regPost,
           {
             headers: {
@@ -167,22 +167,22 @@ const updateCursos = (req, res) =>
         );
 
         if (resp.data.status == "ok") {
-          res.json({ status: "ok", mensagem: "Curso atualizado com sucesso!" });
+          res.json({ status: "ok", mensagem: "Agencia atualizado com sucesso!" });
         } else {
-          res.json({ status: "erro", mensagem: "Erro ao atualizar curso!" });
+          res.json({ status: "erro", mensagem: "Erro ao atualizar agencia!" });
         }
       }
     } catch (erro) {
       console.log(
-        "[ctlAlunos.js|updateCursos] Try Catch: Erro não identificado.",
+        "[ctlAlunos.js|updateAgencia] Try Catch: Erro não identificado.",
         erro
       );
     }
   })();
 
-//@ Realiza remoção soft de cursos
-//@ "[ctlAlunos.js|deleteCursos] Try Catch: Erro não identificado", erro);
-const deleteCursos = (req, res) =>
+//@ Realiza remoção soft de Agencia
+//@ "[ctlAlunos.js|deleteAgencia] Try Catch: Erro não identificado", erro);
+const deleteAgencia = (req, res) =>
 (async () => {
   token = req.session.token;
   try {
@@ -190,7 +190,7 @@ const deleteCursos = (req, res) =>
       const regPost = validateForm(req.body);
       regPost.cursoid = parseInt(regPost.cursoid);
       const resp = await axios.post(
-        process.env.SERVIDOR_DW3 + "/DeleteCursos",
+        process.env.SERVIDOR_DW3 + "/DeleteAgencia",
         {
           cursoid: regPost.cursoid,
         },        
@@ -203,22 +203,22 @@ const deleteCursos = (req, res) =>
       );
 
       if (resp.data.status == "ok") {
-        res.json({ status: "ok", mensagem: "Curso removido com sucesso!" });
+        res.json({ status: "ok", mensagem: "Agencia removido com sucesso!" });
       } else {
-        res.json({ status: "erro", mensagem: "Erro ao remover curso!" });
+        res.json({ status: "erro", mensagem: "Erro ao remover agencia!" });
       }
     }
   } catch (erro) {
     console.log(
-      "[ctlAlunos.js|deleteCursos] Try Catch: Erro não identificado", erro);
+      "[ctlAlunos.js|deleteAgencia] Try Catch: Erro não identificado", erro);
   }
 })();
 module.exports = {
-  getAllCursos,
-  openCursosInsert,
-  openCursosUpdate,
+  getAllAgencia,
+  openAgenciaInsert,
+  openAgenciaUpdate,
   getDados,
-  insertCursos,
-  updateCursos,
-  deleteCursos,
+  insertAgencia,
+  updateAgencia,
+  deleteAgencia,
 };
