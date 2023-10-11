@@ -14,17 +14,34 @@
           <div class="col-sm-6 col-xxl-12">
             <form id="form">
               <div class="mb-1" style="display: none">
-                <input type="number" name="cursoid" class="form-control" id="cursoid" />
+                <input type="number" name="agenciaid" class="form-control" id="agenciaid" />
               </div>
               <div class="mb-1 row ">
-                <label for="codigo" class="col-sm-2 col-xxl-1 col-form-label required">Código:</label>
+                <label for="numagencia" class="col-sm-2 col-xxl-1 col-form-label required">Número da Agencia:</label>
                 <div class="col-sm-4 col-xxl-2">
-                  <input type="text" name="codigo" class="form-control-plaintext" id="codigo" maxlength="10" required readonly />
+                  <input type="text" name="numagencia" class="form-control-plaintext" id="numagencia" maxlength="10" required readonly />
+                </div>
+
+                <label for="banco" class="col-sm-2 col-xxl-1 col-form-label required">Banco Responsável:</label>
+                <div class="col-sm-4 col-xxl-3">
+                  <input type="text" name="banco" class="form-control-plaintext" id="banco" maxlength="50" required readonly />
                 </div>
 
                 <label for="descricao" class="col-sm-2 col-xxl-1 col-form-label required">Descrição:</label>
                 <div class="col-sm-4 col-xxl-3">
                   <input type="text" name="descricao" class="form-control-plaintext" id="descricao" maxlength="50" required readonly />
+                </div>
+              </div>
+
+              <div class="mb-1 row ">
+                <label for="data_criacao" class="col-sm-2 col-xxl-1 col-form-label required">Data de Criação</label>
+                <div class="col-sm-4 col-xxl-2">
+                  <input type="date" name="data_criacao" class="form-control-plaintext" id="data_criacao" required readonly />
+                </div>
+
+                <label for="taxa_transacao" class="col-sm-2 col-xxl-1 col-form-label required">taxa de transação:</label>
+                <div class="col-sm-4 col-xxl-3">
+                  <input type="text" name="taxa_transacao" class="form-control-plaintext" id="taxa_transacao" maxlength="5" required readonly />
                 </div>
               </div>
 
@@ -55,7 +72,7 @@
               Remover
             </button>
 
-            <button type="button" class="btn btn-primary" onclick="window.location.href = '/cursos'" id="btnFechar">
+            <button type="button" class="btn btn-primary" onclick="window.location.href = '/agencias'" id="btnFechar">
               Fechar
             </button>
           </div>
@@ -96,8 +113,8 @@
       await getDados(idBusca);
     }
 
-    //Coloca o curso no primeiro campo do formulário
-    $("#codigo").focus();
+    //Coloca o agencia no primeiro campo do formulário
+    $("#numagencia").focus();
   }
 
   //@ Busca os dados de acordo com o ID para serem alterados
@@ -106,7 +123,7 @@
 
     try {
       const resp = await axios.post(
-        "/cursos/getDados", {
+        "/agencias/getDados", {
           idBusca: idBuscaPar
         }, {
           headers: {
@@ -115,20 +132,23 @@
         }
       );
       if (resp.data.status == "ok") {
-        $("#cursoid").val(resp.data.registro.cursoid);
-        $("#codigo").val(resp.data.registro.codigo);
+        $("#agenciaid").val(resp.data.registro.agenciaid);
+        $("#numagencia").val(resp.data.registro.numagencia);
+        $("#banco").val(resp.data.registro.banco);
         $("#descricao").val(resp.data.registro.descricao);
+        $("#data_criacao").val(resp.data.registro.data_criacao);
+        $("#taxa_transacao").val(resp.data.registro.taxa_transacao);
         if (resp.data.registro.ativo) {
           $("#ativo").prop("checked", true);
         } else {
           $("#ativo").prop("checked", false);
         }
 
-      } else {
+      } /* else {
         alert("Houve erro ao buscar os dados dos alunos!");
-      }
+      } */
     } catch (error) {
-      alert("[view_cadCursos|getDados]Ocorreu um erro inesperado!" + error);
+      alert("[view_cadAgencias|getDados]Ocorreu um erro inesperado!" + error);
     }
   }
 
@@ -143,7 +163,6 @@
         String(input.val()).length == 0
       ) {
         alert("Campo obrigatório");
-        //console.log('Type: ' + input.attr('type') + ' ID: ' + input.attr('id') + ' Name: ' + input.attr('name') + ' Value: ' + input.val() + ' Obrigatori: ' + input.prop("required"));
         $(input).focus();
         validado = false;
         return false;
@@ -170,7 +189,7 @@
     }
 
     try {
-      resp = await axios.post("/cursos/insertCursos", formData, {
+      resp = await axios.post("/agencias/insertAgencias", formData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -183,14 +202,14 @@
         alert("Houve um erro: " + resp.data.mensagem);
       }
     } catch (error) {
-      alert("[view_cadCursos|btnSalvar]Ocorreu um erro inesperado!" + error);
+      alert("[view_cadAgencias|btnSalvar]Ocorreu um erro inesperado!" + error);
     }
   }
 
   //@ Habilita form para alteração
   function habilitaForm() {
-    $("#codigo").prop("class", "form-control");
-    $("#codigo").prop("readonly", false);
+    $("#numagencia").prop("class", "form-control");
+    $("#numagencia").prop("readonly", false);
 
     $("#descricao").prop("class", "form-control");
     $("#descricao").prop("readonly", false);
@@ -209,7 +228,7 @@
   }
 
   //@ Salva a alteração
-  //@ console.log("[view_cadCursos|btnSalvarAlteracao] :", )
+  //@ console.log("[view_cadAgencias|btnSalvarAlteracao] :", )
   async function btnSalvarAlteracao() {
     const formData = new FormData(form);
     const validado = validaForm(formData);
@@ -218,7 +237,7 @@
     }
 
     try {
-      resp = await axios.post("/cursos/updateCursos", formData, {
+      resp = await axios.post("/agencias/updateAgencias", formData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -226,25 +245,25 @@
 
       if (resp.data.status == "ok") {
         alert(resp.data.mensagem);
-        window.open("/cursos/openCursosUpdate/" + String($("#cursoid").val()), "_self");
+        window.open("/agencias/openAgenciasUpdate/" + String($("#agenciaid").val()), "_self");
       } else {
         alert("Houve um erro: " + resp.data.mensagem);
       }
     } catch (error) {
-      alert("[view_cadCursos|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
+      alert("[view_cadAgencias|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
     }
 
 
   }
 
   //@ Cancela a alteração
-  //@ console.log("[view_cadCursos|btnCancelarAlteracao] Valor do id", $("#cursoid").val());    
+  //@ console.log("[view_cadAgencias|btnCancelarAlteracao] Valor do id", $("#agenciaid").val());    
   async function btnCancelarAlteracao() {
-    window.open("/cursos/openCursosUpdate/" + String($("#cursoid").val()), "_self");
+    window.open("/agencias/openAgenciasUpdate/" + String($("#agenciaid").val()), "_self");
   }
 
-  //@ Remove curso
-  //@ console.log("[view_cadCursos|btnSalvarAlteracao] :", )
+  //@ Remove agencia
+  //@ console.log("[view_cadAgencias|btnSalvarAlteracao] :", )
   async function btnRemover() { 
 
     var confirma = confirm("Deseja realmente remover o registro?");
@@ -254,8 +273,8 @@
     const formData = new FormData(form);
 
     try {
-      resp = await axios.post("/cursos/deleteCursos", {
-        cursoid: formData.get("cursoid")
+      resp = await axios.post("/agencias/deleteAgencias", {
+        agenciaid: formData.get("agenciaid")
       }, {
         headers: {
           "Content-Type": "application/json",
@@ -264,12 +283,12 @@
 
       if (resp.data.status == "ok") {
         alert(resp.data.mensagem);
-        window.open("/cursos", "_self");
+        window.open("/agencias", "_self");
       } else {
         alert("Houve um erro: " + resp.data.mensagem);
       }
     } catch (error) {
-      alert("[view_cadCursos|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
+      alert("[view_cadAgencias|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
     }
   }
 

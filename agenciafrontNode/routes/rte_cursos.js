@@ -1,5 +1,6 @@
+
 var express = require('express');
-var cursosApp = require("../app/cursos/controller/ctlCursos")
+var agenciasApp = require("../app/agencias/controller/ctlagencias")
 
 ////var login = require("../controllers/login/login")
 var router = express.Router();
@@ -19,15 +20,15 @@ function authenticationMiddleware(req, res, next) {
 }; 
   
 /* GET métodos */
-router.get('/', authenticationMiddleware, cursosApp.getAllCursos);
-router.get('/openCursosInsert', authenticationMiddleware, cursosApp.openCursosInsert);
-router.get('/openCursosUpdate/:id', authenticationMiddleware, cursosApp.openCursosUpdate);
+router.get('/', authenticationMiddleware, agenciasApp.getAllagencias);
+router.get('/openAgenciasInsert', authenticationMiddleware, agenciasApp.openagenciasInsert);
+router.get('/openAgenciasUpdate/:id', authenticationMiddleware, agenciasApp.openagenciasUpdate);
 
 /* POST métodos */
-router.post('/insertCursos', authenticationMiddleware, cursosApp.insertCursos);
-router.post('/getDados', authenticationMiddleware, cursosApp.getDados);
-router.post('/updateCursos', authenticationMiddleware, cursosApp.updateCursos);
-router.post('/deleteCursos', authenticationMiddleware, cursosApp.deleteCursos);
+router.post('/insertagencias', authenticationMiddleware, agenciasApp.insertagencias);
+router.post('/getDados', authenticationMiddleware, agenciasApp.getDados);
+router.post('/updateagencias', authenticationMiddleware, agenciasApp.updateagencias);
+router.post('/deleteagencias', authenticationMiddleware, agenciasApp.deleteagencias);
 
 
 

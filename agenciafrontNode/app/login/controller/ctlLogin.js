@@ -1,5 +1,3 @@
-//const { session } = require("passport");
-
 axios = require("axios");
 
 const Login = async (req, res) => {
