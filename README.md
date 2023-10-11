@@ -1,5 +1,29 @@
 # Anotações do DW3S6-2023-Trabalho1
+# Comandos inicialização back
+```
+node app.js
+```
+### Caso "Error: Cannot find module 'express'"
+```
+npm i
+```
+# Comandos inicialização front
 
+### usuario e senha
+```
+qwe
+```
+### Linux
+```
+DEBUG=dw3frontnode:* npm start
+```
+### Windows
+```
+set DEBUG=dw3frontNode:*
+```
+```
+npm start
+```
 
 Trabalho para 25/10/2023
 
@@ -21,14 +45,23 @@ Trabalho para 25/10/2023
 
     • Agência(
     agenciaid bigserial,
-    removido boolean
     numagencia varchar(50) UNIQUE,
     banco varchar(40),
     descricao varchar(40),
     data_criacao date,
     taxa_transacao decimal,
+    removido boolean,
+    ativo boolean,
     )
 
-    
+ 
+    agenciaid =
+    removido =
+    numagencia = codigo
+    banco =
+    descricao =
+    data_criacao =
+    taxa_transacao =
+
 
       
