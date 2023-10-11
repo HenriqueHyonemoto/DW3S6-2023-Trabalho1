@@ -42,10 +42,10 @@ const openAgenciaInsert = (req, res) =>
 
 //@ Função para validar campos no formulário
 function validateForm(regFormPar) {
-  if (regFormPar.cursoid == "") {
-    regFormPar.cursoid = 0;
+  if (regFormPar.agenciaid == "") {
+    regFormPar.agenciaid = 0;
   } else {
-    regFormPar.cursoid = parseInt(regFormPar.cursoid);
+    regFormPar.agenciaid = parseInt(regFormPar.agenciaid);
   }
 
   regFormPar.ativo = regFormPar.ativo === "true"; //converte para true ou false um check componet
@@ -89,9 +89,9 @@ const getDados = (req, res) =>
     console.log("[ctlAgencia.js|getDados] valor id :", idBusca);
     try {
       resp = await axios.post(
-        process.env.SERVIDOR_DW3 + "/GetCursoByID",
+        process.env.SERVIDOR_DW3 + "/GetAgenciaByID",
         {
-          cursoid: idBusca,
+          agenciaid: idBusca,
         },
         {
           headers: {
@@ -119,7 +119,7 @@ const insertAgencia = (req, res) =>
     try {
       if (req.method == "POST") {
         const regPost = validateForm(req.body);
-        regPost.cursoid = 0;
+        regPost.agenciaid = 0;
         const resp = await axios.post(
           process.env.SERVIDOR_DW3 + "/InsertAgencia",
           regPost,
@@ -188,11 +188,11 @@ const deleteAgencia = (req, res) =>
   try {
     if (req.method == "POST") {
       const regPost = validateForm(req.body);
-      regPost.cursoid = parseInt(regPost.cursoid);
+      regPost.agenciaid = parseInt(regPost.agenciaid);
       const resp = await axios.post(
         process.env.SERVIDOR_DW3 + "/DeleteAgencia",
         {
-          cursoid: regPost.cursoid,
+          agenciaid: regPost.agenciaid,
         },        
         {
           headers: {
