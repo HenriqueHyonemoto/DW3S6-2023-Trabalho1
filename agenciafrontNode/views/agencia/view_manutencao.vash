@@ -36,11 +36,7 @@
                             <tbody>
                                 @model.data.registro.forEach(function(registro){
                                 <tr>                                    
-<<<<<<< HEAD
                                     <td><a href="/agencia/openagenciaUpdate/@registro.agenciaid" class="btn btn-info btn-sm"><i
-=======
-                                    <td><a href="/agencias/openagenciasUpdate/@registro.agenciaid" class="btn btn-info btn-sm"><i
->>>>>>> e61459a0573006faa99f9b1b5d1e2b8c03dcf1f6
                                         class="fa fa-magnifying-glass"></i>Visualizar</a></td>
                                     <td>@registro.codigo</td>
                                     <td>@registro.descricao</td>
