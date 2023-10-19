@@ -1,17 +1,51 @@
-@html.extend('layout', function(model){ @html.block('content', function(model){
+@html.extend('layout', function(model){ 
 
+@html.block('content', function(model){
+  <link rel="icon" href="images/tenebris.png" type="image/icon type">
+  <style>
+    #background-video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -100;
+        background: url(https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/504400/ac6891f4a16e9dfbdfef65dc5672b01cc1abf271.jpg)
+        no-repeat center;
+        background-size:cover;
+      }
+    
+            </style>
+<video autoplay muted loop id="background-video">
+  <source src="videos/VideoBack.mp4" type="video/mp4">
+</video>
 <main>
-  <div class="container-fluid px-4">
-    <h1 class="mt-2">@model.title</h1>
-    <ol class="breadcrumb mb-2">
-      <li class="breadcrumb-item active">@model.title</li>
-    </ol>
+  
+
+  <div class="container-fluid px-4" style="padding:60px">
     <div class="row">
       <div class="col-xl-12">
         <div class="card-header"></div>
 
-        <div class="card-body">
-          <div class="col-sm-6 col-xxl-12">
+        <div class="card-body" style=
+        "
+        padding: 15px;
+         outline: 2px solid yellow ;
+    outline-style: dotted;
+    background-color: black;
+    color: white;
+    box-shadow: 3px 3px  #00FF00;
+    margin-top:10px;
+        "
+        >
+          <div style="margin-top:10px;" class="col-sm-6 col-xxl-12">
+            <h1 class="mt-2" style="color:white">@model.title</h1>
+    <ol class="breadcrumb mb-2">
+      <li class="breadcrumb-item active">@model.title</li>
+    </ol>
             <form id="form">
               <div class="mb-1" style="display: none">
                 <input type="number" name="agenciaid" class="form-control" id="agenciaid" />
@@ -41,7 +75,7 @@
 
                 <label for="taxa_transacao" class="col-sm-2 col-xxl-1 col-form-label required">taxa de transação:</label>
                 <div class="col-sm-4 col-xxl-3">
-                  <input type="text" name="taxa_transacao" class="form-control" id="taxa_transacao" placeholder="0.0" maxlength="2"/>
+                  <input type="text" name="taxa_transacao" class="form-control" id="taxa_transacao" placeholder="0.0" maxlength="5"/>
                 </div>
               </div>
 
@@ -52,7 +86,7 @@
             </form>
           </div>
           <div class="">
-            <button type="button" class="btn btn-success me-2" onclick="btnSalvar()" id="btnSalvar" hidden>
+            <button type="button" class="btn btn-warning me-2" onclick="btnSalvar()" id="btnSalvar" hidden>
               Salvar
             </button>
 

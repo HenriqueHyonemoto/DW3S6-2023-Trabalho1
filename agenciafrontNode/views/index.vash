@@ -1,9 +1,336 @@
-@html.extend('layout', function(model){
+@html.extend('layout', function(model){ 
 
     @html.block('content', function(model){
 
-        <h3>Olá @model.title</h3>
-
-    })
-
-})
+        
+      <style>
+        #background-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -100;
+            background: url(https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/504400/ac6891f4a16e9dfbdfef65dc5672b01cc1abf271.jpg)
+            no-repeat center;
+            background-size:cover;
+          }
+        
+                </style>
+    <video autoplay muted loop id="background-video">
+      <source src="videos/VideoBack.mp4" type="video/mp4">
+    </video>
+    <link rel="icon" href="images/IFSP-VTP-Logo-Branca.png" type="image/icon type">
+    <main>
+      
+    
+      <div class="container-fluid px-4" style="padding:60px">
+        
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="card-header"></div>
+    
+            <div class="card-body" style=
+            "
+            padding: 15px;
+             outline: 2px solid yellow ;
+        outline-style: dotted;
+        background-color: black;
+        color: white;
+        box-shadow: 3px 3px  #00FF00;
+        margin-top:10px;
+            "
+            >
+              <div style="margin-top:10px;" class="col-sm-6 col-xxl-12">
+                <h1 class="mt-2" style="color:white">Pagina Inicial</h1>
+        <ol class="breadcrumb mb-2">
+          <img src="images/tenebris.png" style="width:500px;display: block;margin: 0 auto;" >
+        </ol>
+                
+              </div>
+              <div class="">
+                <button type="button" class="btn btn-warning me-2" onclick="btnSalvar()" id="btnSalvar" hidden>
+                  Salvar
+                </button>
+    
+                <button type="button" class="btn btn-warning me-2" onclick="btnAlterar()" id="btnAlterar" hidden>
+                  Alterar
+                </button>
+    
+                <button type="button" class="btn btn-warning me-2" onclick="btnSalvarAlteracao()" id="btnSalvarAlteracao" hidden>
+                  Salvar Alteração
+                </button>
+    
+                <button type="button" class="btn btn-info me-2" onclick="btnCancelarAlteracao()" id="btnCancelarAlteracao" hidden>
+                  Cancelar Alteração
+                </button>
+    
+                <button type="" class="btn btn-danger" onclick="btnRemover()" id="btnRemover" hidden>
+                  Remover
+                </button>
+    
+                <button type="button" class="btn btn-primary" onclick="window.location.href = '/agencia'" id="btnFechar">
+                  Sistema de Agencias
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    }) })
+    
+    <script>
+      const form = document.getElementById("form");
+      var oper = "@model.oper";
+    
+      window.onload = limpaForm();
+    
+      //@ Limpa o conteúdo dos campos do formulário
+      async function limpaForm() {
+    
+        $("#form").each(function() {
+          this.reset();
+        });
+    
+        // Mostra os botões de acordo com o tipo da operação
+        if (oper == "c") {
+          $("#btnSalvar").prop("hidden", false);
+          habilitaForm();
+        }
+    
+        if (oper == "u") {
+          $("#btnAlterar").prop("hidden", false);
+        }
+    
+        //Necessário para buscar dados de acordo com o ID para serem alterados
+        if (oper == "u") {
+          idBusca = "@model.idBusca";
+          await getDados(idBusca);
+        }
+    
+        //Coloca o agencia no primeiro campo do formulário
+        $("#numero_agencia").focus();
+      }
+    
+      //@ Busca os dados de acordo com o ID para serem alterados
+      async function getDados(idBuscaPar) {
+        console.log("[getDados] idBusca", idBuscaPar);
+    
+        try {
+          const resp = await axios.post(
+            "/agencia/getDados", {
+              idBusca: idBuscaPar
+            }, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (resp.data.status == "ok") {
+            $("#agenciaid").val(resp.data.registro.agenciaid);
+            $("#numero_agencia").val(resp.data.registro.numero_agencia);
+            $("#banco").val(resp.data.registro.banco);
+            $("#descricao").val(resp.data.registro.descricao);
+            $("#data_criacao").val(resp.data.registro.data_criacao);
+            $("#taxa_transacao").val(resp.data.registro.taxa_transacao);
+            if (resp.data.registro.ativo) {
+              $("#ativo").prop("checked", true);
+            } else {
+              $("#ativo").prop("checked", false);
+            }
+    
+          } /* else {
+            alert("Houve erro ao buscar os dados dos alunos!");
+          } */
+        } catch (error) {
+          alert("[view_cadagencia|getDados]Ocorreu um erro inesperado!" + error);
+        }
+      }
+    
+      //@ Valida o formulário antes de salvá-lo
+      function validaForm(formDataPar) {
+        var validado = true;
+        $("#form input, #form select").each(function(index) {
+          var input = $(this);
+          if (
+            input.attr("type") == "text" &&
+            input.prop("required") &&
+            String(input.val()).length == 0
+          ) {
+            alert("Campo obrigatório");
+            $(input).focus();
+            validado = false;
+            return false;
+          }
+        });
+    
+        if (formDataPar.get("ativo") == "on") {
+          formDataPar.set("ativo", true);
+        } else {
+          formDataPar.set("ativo", false);
+        }
+        formDataPar.set("removido", false);
+    
+        return validado;
+      }
+    
+      //@ Salva os dados
+      async function btnSalvar() {
+        const formData = new FormData(form);
+    
+        const validado = validaForm(formData);
+        if (!validado) {
+          return;
+        }
+    
+        try {
+          resp = await axios.post("/agencia/insertagencia", formData, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+    
+          if (resp.data.status == "ok") {
+            alert(resp.data.mensagem);
+            limpaForm();
+          } else {
+            alert("Houve um erro: " + resp.data.mensagem);
+          }
+        } catch (error) {
+          alert("[view_cadagencia|btnSalvar]Ocorreu um erro inesperado!" + error);
+        }
+      }
+    
+      //@ Habilita form para alteração
+      function habilitaForm() {
+        $("#numero_agencia").prop("class", "form-control");
+        $("#numero_agencia").prop("readonly", false);
+    
+        $("#descricao").prop("class", "form-control");
+        $("#descricao").prop("readonly", false);
+    
+        $("#ativo").prop("disabled", false);
+      }
+    
+      //@ Habilita a alteração
+      async function btnAlterar() {
+        $("#btnSalvarAlteracao").prop("hidden", false);
+        $("#btnCancelarAlteracao").prop("hidden", false);
+        $("#btnRemover").prop("hidden", false);
+        $("#btnAlterar").prop("hidden", true);
+    
+        habilitaForm();
+      }
+    
+      //@ Salva a alteração
+      //@ console.log("[view_cadagencia|btnSalvarAlteracao] :", )
+      async function btnSalvarAlteracao() {
+        const formData = new FormData(form);
+        const validado = validaForm(formData);
+        if (!validado) {
+          return;
+        }
+    
+        try {
+          resp = await axios.post("/agencia/updateagencia", formData, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+    
+          if (resp.data.status == "ok") {
+            alert(resp.data.mensagem);
+            window.open("/agencia/openagenciaUpdate/" + String($("#agenciaid").val()), "_self");
+          } else {
+            alert("Houve um erro: " + resp.data.mensagem);
+          }
+        } catch (error) {
+          alert("[view_cadagencia|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
+        }
+    
+    
+      }
+    
+      //@ Cancela a alteração
+      //@ console.log("[view_cadagencia|btnCancelarAlteracao] Valor do id", $("#agenciaid").val());    
+      async function btnCancelarAlteracao() {
+        window.open("/agencia/openagenciaUpdate/" + String($("#agenciaid").val()), "_self");
+      }
+    
+      //@ Remove agencia
+      //@ console.log("[view_cadagencia|btnSalvarAlteracao] :", )
+      async function btnRemover() { 
+    
+        var confirma = confirm("Deseja realmente remover o registro?");
+        if (!confirma) {
+          return; //@ Se o usuário selecionar Cancela, o registro não é removido.
+        }
+        const formData = new FormData(form);
+    
+        try {
+          resp = await axios.post("/agencia/deleteagencia", {
+            agenciaid: formData.get("agenciaid")
+          }, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+    
+          if (resp.data.status == "ok") {
+            alert(resp.data.mensagem);
+            window.open("/agencia", "_self");
+          } else {
+            alert("Houve um erro: " + resp.data.mensagem);
+          }
+        } catch (error) {
+          alert("[view_cadagencia|btnSalvarAlteracao]Ocorreu um erro inesperado!" + error);
+        }
+      }
+    
+    
+      $(function() {
+        $("#rendafamiliar").maskMoney();
+      });
+    
+      async function deleteAlunos(prontuarioPar) {
+        resp = await axios.post(
+          "/alunos/DeleteAlunos", {
+            id: $("#id").val(),
+          }, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+    
+        if (resp.data.status == "ok") {
+          alert("Aluno removido com sucesso!");
+          window.open("/alunos", "_self");
+        } else {
+          alert("Houve erro ao remover os dados dos alunos!");
+        }
+      }
+    
+      async function testeFormData() {
+        const form = document.getElementById("form");
+        const formData = new FormData(form);
+    
+        // for (const [key, value] of formData) {
+        //     console.log("Valores:" + `${key}: ${value}`);
+        // }
+    
+        console.log("Prontuario: ", formData.get("prontuario"));
+      }
+    </script>
+    
+    <style>
+      .required:after {
+        content: " *";
+        color: red;
+      }
+    </style>

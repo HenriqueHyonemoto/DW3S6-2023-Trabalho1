@@ -1,9 +1,11 @@
 @html.include("header")
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-black" style="height: 73px;border: 2px solid yellow ;
+    border-style: dotted;
+    box-shadow: 3px 3px  #00FF00;">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand ps-3" href="index.html"><img src="/images/IFSP-VTP-Logo-Branca.png" style="width:150px"></a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -29,35 +31,37 @@
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion " style = "background-color: rgb(0, 0, 0);border: 2px solid yellow ;
+            border-style: dotted;
+            box-shadow: 2px 2px  #00FF00;" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Principal</div>
-                        <a class="nav-link" href="/">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="sb-sidenav-menu-heading" STYLE="color:white">Principal</div>
+                        <a STYLE="color:rgb(128, 128, 128)" class="nav-link" href="/">
+                            <div STYLE="color:rgb(128, 128, 128)" class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Home
                         </a>
-                        <div class="sb-sidenav-menu-heading">Módulos</div>
+                        <div class="sb-sidenav-menu-heading" STYLE="color:white">Módulos</div>
 
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                        <a STYLE="color:rgb(128, 128, 128)" class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open" STYLE="color:rgb(128, 128, 128)"></i></div>
                             Sitema de Agência
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                <a STYLE="color:rgb(128, 128, 128)" class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                     data-bs-target="#pagesCollapseError" aria-expanded="false"
-                                    aria-controls="pagesCollapseError">
+                                    aria-controls="pagesCollapseError" >
                                     Agencia
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
                                     data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="/agencia">Manutenção de agencia</a>
+                                        <a STYLE="color:rgb(128, 128, 128)" class="nav-link" href="/agencia">Manutenção de agencia</a>
                                     </nav>
                                 </div>
                             </nav>
@@ -65,7 +69,9 @@
 
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
+                <div class="sb-sidenav-footer" style = "background-color: rgb(19, 19, 19);color:white;border: 2px solid yellow ;
+                border-style: dotted;
+                box-shadow: 3px 3px  #00FF00;">
                     <div class="small">Bem vindo:</div>
                     @model.userName
                 </div>

@@ -1,21 +1,54 @@
 @html.extend('layout', function(model){
 
 @html.block('content', function(model){
+    
+    <style>
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -100;
+    background: url(img/VideoImg.jpg)
+    no-repeat center;
+    background-size:cover;
+  }
 
-
+  table, th, td {
+  outline: 1px solid yellow ;
+    outline-style: dotted;
+    background-color: black;
+    color: white;
+}
+        </style>
+<video autoplay muted loop id="background-video">
+    <source src="videos/VideoBack.mp4" type="video/mp4">
+</video>
 <main>
+    
 
-    <div class="container-fluid px-4">
-        <h1 class="mt-4">@model.title</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">@model.title</li>
-        </ol>
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card mb-4">
-                    <div class="col-2 ms-1 mt-1 mb-2">
-                        <button type="button" class="btn btn-primary"
-                            onclick="window.location.href = '/agencia/openagenciaInsert'">Novo agencia</button>
+    <div class="container-fluid px-4" style="padding:60px">
+        
+        <div class="row" >
+            <div class="col-xl-12" >
+                
+                <div class="card mb-4" style ="background-color:black;outline: 2px solid yellow ;
+                outline-style: dotted;
+                background-color: black;
+                color: white;
+                box-shadow: 3px 3px  #00FF00;" >
+                <h1 class="mt-4" style = "margin-left:10px">@model.title</h1>
+                <ol class="breadcrumb mb-4">
+                    <li style = "margin-left:10px" class="breadcrumb-item active">@model.title</li>
+                </ol>
+                    <div class="col-2 ms-1 mt-1 mb-2" >
+                        <br>
+                        <button type="button" style = "margin-left:10px" class="btn btn-primary"
+                            onclick="window.location.href = '/agencia/openagenciaInsert'">Nova Agencia</button>
                     </div>
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
@@ -24,8 +57,8 @@
 
 
                     <div class="card-body">
-                        <table id="example" class="stripe" style="width:100%">
-                            <thead>
+                        <table id="example" class="stripe" style="width:100%; color:rgb(165, 165, 165)">
+                            <thead style="width:100%;">
                                 <tr>
                                     <th>Ação</th>                                    
                                     <th>Código</th>
@@ -38,20 +71,20 @@
                                 <tr>                                    
                                     <td><a href="/agencia/openagenciaUpdate/@registro.agenciaid" class="btn btn-info btn-sm"><i
                                         class="fa fa-magnifying-glass"></i>Visualizar</a></td>
-                                    <td>@registro.codigo</td>
+                                    <td>@registro.numero_agencia</td>
                                     <td>@registro.descricao</td>
                                     <td>@(registro.ativo ? "Sim" : "Não")</td>                                    
                                 </tr>
                                 })
                             </tbody>
-                            <tfoot>
+                            <!--<tfoot>
                                 <tr>
                                     <th>Ação</th>                                    
                                     <th>Código</th>
                                     <th>Descrição</th>
                                     <th>Ativo</th> 
                                 </tr>
-                            </tfoot>
+                            </tfoot>-->
                         </table>
                     </div>
                 </div>

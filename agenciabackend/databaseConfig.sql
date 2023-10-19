@@ -1,13 +1,17 @@
+--drop table agencia
 create table IF NOT EXISTS agencia (
     agenciaid bigserial constraint pk_agencia PRIMARY KEY,
     numero_agencia varchar(5) UNIQUE,
     descricao VARCHAR(60),
     banco varchar(40),
     data_criacao date,
-    taxa_transacao numeric(1),
+    taxa_transacao numeric(4,2),
     ativo boolean,
     removido boolean DEFAULT false
 );
+
+alter table agencia alter column taxa_transacao type numeric(4, 2);
+
 
 insert into agencia values 
     (default, '001', 'Centro','Santander','20/08/2000',1.5, true),
@@ -24,6 +28,7 @@ create table IF NOT EXISTS usuarios (
     removido boolean DEFAULT false
 );
 
+SELECT * FROM AGENCIA;
 CREATE EXTENSION if NOT EXISTS pgcrypto;
 
 insert into usuarios values 
