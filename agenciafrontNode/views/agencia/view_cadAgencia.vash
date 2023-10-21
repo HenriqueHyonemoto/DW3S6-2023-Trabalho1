@@ -170,7 +170,9 @@
         $("#numero_agencia").val(resp.data.registro.numero_agencia);
         $("#banco").val(resp.data.registro.banco);
         $("#descricao").val(resp.data.registro.descricao);
-        $("#data_criacao").val(resp.data.registro.data_criacao);
+        const dataCriacao = new Date(resp.data.registro.data_criacao);
+        $("#data_criacao").val(dataCriacao.toISOString().split('T')[0]);
+        //$("#data_criacao").val(resp.data.registro.data_criacao);
         $("#taxa_transacao").val(resp.data.registro.taxa_transacao);
         if (resp.data.registro.ativo) {
           $("#ativo").prop("checked", true);

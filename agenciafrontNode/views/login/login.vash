@@ -2,11 +2,45 @@
 <html lang="en">
 @html.include("header")
 
+    <style>
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -100;
+    background: url(img/VideoImg.jpg)
+    no-repeat center;
+    background-size:cover;
+  }
+
+  table, th, td {
+  outline: 1px solid yellow ;
+    outline-style: dotted;
+    background-color: black;
+    color: white;
+}
+        </style>
+        <video autoplay muted loop id="background-video">
+    <source src="videos/VideoBack.mp4" type="video/mp4">
+</video>
 <body>
-    <div class="login ">
-        <div class="card mx-auto col-lg-4 mt-5" style="background-color:lightblue;">
+    <div class="login " >
+        <div class="card mx-auto col-lg-4 mt-5" style="background-color:lightblue;background-color:black;outline: 2px solid yellow ;
+        outline-style: dotted;
+        background-color: black;
+        color: white;
+        box-shadow: 3px 3px  #00FF00;">
             <div class="card mx-auto col-10  mt-5 mb-5">
-                <div class="card-body">
+                <div class="card-body" style ="background-color:black;outline: 2px solid yellow ;
+                outline-style: dotted;
+                background-color: black;
+                color: white;
+                box-shadow: 3px 3px  #00FF00;" >
                     <h4 class="card-title" style="text-align: center;">Login</h4>
                     <form class="form-login" action="Login" method="POST">
                         <label for="labelusername" class="form-label mt-4">Informe seu usuário</label>
