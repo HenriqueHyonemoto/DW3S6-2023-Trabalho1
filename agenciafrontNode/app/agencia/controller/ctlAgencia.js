@@ -4,14 +4,19 @@ const axios = require("axios");
 const getAllAgencia = (req, res) =>
   (async () => {
     userName = req.session.userName;
+    token = req.session.token;
     try {
-      resp = await axios.get(process.env.SERVIDOR_DW3 + "/GetAllAgencia", {});
+      resp = await axios.get(process.env.SERVIDOR_DW3 + "/GetAllAgencia", {headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },});
       //console.log("[ctlLogin.js] Valor resp:", resp.data);
       res.render("agencia/view_manutencao", {
         title: "Manutenção de Agencia",
         data: resp.data,
         userName: userName,
       });
+      
     } catch (erro) {
       console.log("[ctlAgencia.js|getAllAgencia] Try Catch:Erro de requisição");
     }
