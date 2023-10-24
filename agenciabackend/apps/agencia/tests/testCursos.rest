@@ -10,7 +10,7 @@ content-type: application/json
 ### teste de buscar agencia por ID
 POST http://localhost:40000/GetAgenciaByID HTTP/1.1
 content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzQ3ODI5NzksInVzZXJuYW1lIjoicXdlIn0.SlYYCm8J6wlpb3i1jJcSvhSz6VjwKvzPOxza8P6-hzo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5ODE1MzE4MywiZXhwIjoxNjk4MTUzNzgzfQ.O3F43FZOtxdh_YuGrj02a7Dc06P4qqipLN0kbyZtBrw
 
 {    
     "agenciaid": 1
@@ -19,7 +19,7 @@ content-type: application/json
 ### teste de inserção de agencia
 POST http://localhost:40000/InsertAgencia HTTP/1.1
 content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5ODE1MzE4MywiZXhwIjoxNjk4MTUzNzgzfQ.O3F43FZOtxdh_YuGrj02a7Dc06P4qqipLN0kbyZtBrw
 
 {    
     "agenciaid": 1,
@@ -35,10 +35,10 @@ content-type: application/json
 ### teste de atualização de agencia
 POST http://localhost:40000/UpdateAgencia HTTP/1.1
 content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5ODE1MzE4MywiZXhwIjoxNjk4MTUzNzgzfQ.O3F43FZOtxdh_YuGrj02a7Dc06P4qqipLN0kbyZtBrw
 
 {    
-    "agenciaid": 5,
+    "agenciaid": 1,
     "numero_agencia": 223,
     "descricao": "Proximo ao Porecatu ALTERADO",
     "banco": "Santander ALTERADO",
@@ -51,7 +51,7 @@ content-type: application/json
 ### teste de remover a agencia
 POST http://localhost:40000/DeleteAgencia HTTP/1.1
 content-type: application/json
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5ODE1MzE4MywiZXhwIjoxNjk4MTUzNzgzfQ.O3F43FZOtxdh_YuGrj02a7Dc06P4qqipLN0kbyZtBrw
 
 {    
     "agenciaid": 1 
