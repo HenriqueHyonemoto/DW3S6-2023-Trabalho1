@@ -10,7 +10,7 @@ routerApp.use((req, res, next) => {
 });
 
 //Rotas de Agencia
-routerApp.get("/GetAllAgencia", appAgencia.GetAllAgencia);
+routerApp.get("/GetAllAgencia", appLogin.AutenticaJWT, appAgencia.GetAllAgencia);
 routerApp.post("/GetAgenciaByID", appLogin.AutenticaJWT, appAgencia.GetAgenciaByID);
 routerApp.post("/InsertAgencia", appLogin.AutenticaJWT,   appAgencia.InsertAgencia);
 routerApp.post("/UpdateAgencia", appLogin.AutenticaJWT,   appAgencia.UpdateAgencia);
