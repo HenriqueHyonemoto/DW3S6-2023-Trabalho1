@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Anotações do DW3S6-2023-Trabalho1
 # Comandos inicialização back
 ```
