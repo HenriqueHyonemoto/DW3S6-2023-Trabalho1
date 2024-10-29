@@ -122,4 +122,3 @@ Trabalho para 25/10/2023
     ativo boolean,
     )
       
->>>>>>> 40fd9896b25677752470601311cfa3868f494eb2
